@@ -1,20 +1,7 @@
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import {
-  Button,
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  Paper,
-  TextField,
-  Typography,
-} from '@mui/material';
+import { Button, Paper, TextField, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { useFormik } from 'formik';
 import { NextPage } from 'next';
-import { useState } from 'react';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
@@ -23,16 +10,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginPage: NextPage = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = (): void => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
-
   const formik = useFormik({
     initialValues: {
       userName: '',
@@ -62,7 +39,7 @@ const LoginPage: NextPage = () => {
         }}
         onSubmit={formik.handleSubmit}
       >
-        <Typography component='h1' variant='h5'>
+        <Typography component='h5' variant='h5'>
           Sign in
         </Typography>
         <TextField
@@ -76,31 +53,6 @@ const LoginPage: NextPage = () => {
           error={formik.touched.userName && Boolean(formik.errors.userName)}
           helperText={formik.touched.userName && formik.errors.userName}
         />
-
-        <FormControl margin='normal' variant='standard'>
-          <InputLabel htmlFor='password'>Password</InputLabel>
-          <OutlinedInput
-            id='password'
-            type={showPassword ? 'text' : 'password'}
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            // helperText={formik.touched.password && formik.errors.password}
-            endAdornment={
-              <InputAdornment position='end'>
-                <IconButton
-                  aria-label='toggle password visibility'
-                  onMouseDown={handleMouseDownPassword}
-                  onClick={handleClickShowPassword}
-                  edge='end'
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label='Password'
-          />
-        </FormControl>
         <TextField
           margin='normal'
           id='password'
