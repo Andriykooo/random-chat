@@ -3,6 +3,7 @@ import { Container } from '@mui/system';
 import { AxiosError } from 'axios';
 import { useFormik } from 'formik';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
 import * as Yup from 'yup';
 import { AuthInputType, AuthToken } from '../../api/authApi/authApi.schema';
@@ -26,10 +27,15 @@ const validationSchema = Yup.object().shape({
 });
 
 export const Auth: React.FC<AuthProps> = ({ title, button, link, request }) => {
+  const router = useRouter();
   const message = useMessage();
 
   const handleRequest = useMutation(request, {
-    onError: (error: AxiosError) => {
+    onSuccess: (token: AuthToken): void => {
+      localStorage.setItem('token', JSON.stringify(token));
+      router.push('/dashboard');
+    },
+    onError: (error: AxiosError): void => {
       message.error((error as AxiosError<ErrorType>)?.response?.data?.err);
     },
   });

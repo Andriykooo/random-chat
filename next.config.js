@@ -9,11 +9,11 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/login',
+        destination: '/dashboard',
         permanent: true,
       },
-    ]
+    ];
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
