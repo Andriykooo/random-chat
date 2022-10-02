@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
-import { Signin } from '../../src/screens/Signin/Signin';
+import { SigninScreen } from '../../src/screens/Signin/Signin';
 
 const Login: NextPage = () => {
-  return <Signin />;
+  return <SigninScreen />;
 };
 
 export default Login;

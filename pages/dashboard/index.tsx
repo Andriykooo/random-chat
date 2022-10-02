@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { DashboardScreen } from '../../src/screens/Dashboard/DashboardScreen';
+import { DashboardScreen } from '../../src/screens/Dashboard/Dashboard';
 
 const Dashboard: NextPage = () => {
   return <DashboardScreen />;

@@ -2,7 +2,7 @@ import React from 'react';
 import { authApi } from '../../api/authApi/authApi';
 import { Auth } from '../../components/Auth/Auth';
 
-export const Signin: React.FC = () => {
+export const SigninScreen: React.FC = () => {
   return (
     <Auth
       title='Sign in'
