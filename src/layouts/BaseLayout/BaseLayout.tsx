@@ -11,8 +11,6 @@ export const BaseLayout: React.FC<PropsWithChildren> = ({ children }) => {
     if (!token?.accessToken) {
       router.push('/login');
     }
-
-    console.log('render');
   }, []);
 
   return <Messages>{children}</Messages>;
